@@ -48,7 +48,10 @@ class Column extends Component {
                                 isDragging={snapshot.isDraggingOver}
                             >
                                 {
-                                    this.props.tasks.map((task, index) => <Task key={index} task={task} index={index}/>)
+                                    this.props.tasks.map((task, index) => <Task
+                                        key={index}
+                                        task={task}
+                                        index={index}/>)
                                 }
                                 {provided.placeholder}
                             </TaskList>

@@ -25,7 +25,10 @@ class App extends Component {
         }
 
         console.log("debug:result: ", result)
-        const {destination, source, draggableId} = result;
+        let {destination, source, draggableId} = result;
+
+        draggableId = draggableId.split('-')[1];
+        console.log("draggableId : ", draggableId )
 
         const newState = {...this.state};
 
@@ -41,14 +44,20 @@ class App extends Component {
         console.log("NEW STATE: ", newState)
 
     }
+    handleDragUpdate = () => {
+        console.log("call: handleDragUpdate ")
+    }
 
     render() {
         console.log("some tandom text");
         return (
             <Container>
 
-                <DragDropContext onDragEnd={this.onDragEnd}>
-                    {initialData.columnOrder.map(columnId => {
+                <DragDropContext
+                    onDragEnd={this.onDragEnd}
+                    onDragUpdate={this.handleDragUpdate}
+                >
+                    {initialData.columnOrder.slice(0,1).map(columnId => {
 
                         const column = this.state.columns[columnId];
                         const tasks = column.taskIds.map(id => this.state.tasks[id])
