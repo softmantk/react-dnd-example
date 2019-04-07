@@ -12,11 +12,12 @@ const Container = styled.div`
 
 class Task extends Component {
     render() {
+        console.log("taskID: ", this.props.task.id, this.props.task.id === 1)
         return (
             <Draggable
                 draggableId={this.props.task.id}
                 index={this.props.index}
-                // isDragDisabled={this.props.task.id === 1}
+                isDragDisabled={true}
             >
                 {
                     (provided, snapshot) => {
