@@ -35,10 +35,12 @@ class Column extends Component {
 
     render() {
 
+        // console.log("Column:this.props.tasks: ", this.props)
+
         return (
             <Container>
                 <Title>{`${this.props.column.title}: ${this.props.column.id}`}</Title>
-                <Droppable droppableId={this.props.column.id}>
+                <Droppable droppableId={`id-${this.props.column.id}`}>
                     {
                         (provided, snapshot) => {
                             // console.log("SN:DRPABLE:CLMN: ", snapshot)
@@ -49,9 +51,14 @@ class Column extends Component {
                             >
                                 {
                                     this.props.tasks.map((task, index) => <Task
+                                        columnId={this.props.column.id}
                                         key={index}
                                         task={task}
-                                        index={index}/>)
+                                        index={index}
+                                        selectionCount={this.props.selectionCount}
+                                        selected={this.props.selectedTaskIds.includes(task.id)}
+                                        changeSelection={this.props.changeSelection}
+                                    />)
                                 }
                                 {provided.placeholder}
                             </TaskList>

@@ -60,10 +60,12 @@ const initialData = {
         4: {
             id: 4,
             title: "COMPLETED",
-            taskIds: [6,7,8,9,10]
+            taskIds: [6, 7, 8, 9, 10]
         },
     },
-    columnOrder: [1, 2, 3, 4]
+    columnOrder: [1, 2, 3, 4],
+    selectedTasks: [],
+    // draggingTaskId
 }
 const x = {
     "draggableId": 2,
